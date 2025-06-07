@@ -5,19 +5,23 @@ const songs = [
 ];
 
 let currentSongIndex = Math.floor(Math.random() * songs.length);
+let audio = new Audio();
 
 function playNextSong() {
-  var audio = new Audio(songs[currentSongIndex]);
-
+  audio.pause(); // Stop the current audio
+  audio.currentTime = 0; // Reset to the beginning
+  audio.src = songs[currentSongIndex]; // Set the new song
   audio.loop = false;
   audio.volume = 0.4;
+
+  audio.play().catch((error) => {
+    console.log("Audio play failed:", error);
+  });
 
   audio.addEventListener("ended", () => {
     currentSongIndex = Math.floor(Math.random() * songs.length);
     playNextSong();
   });
-
-  audio.play();
 }
 
 function userHasClicked() {
