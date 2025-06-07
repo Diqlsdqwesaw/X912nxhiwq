@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let titles = " overdose ";
+  let titles = " vanish ";
   let titleElement = document.querySelector("title");
   let index = 0;
   let delay = 200;
