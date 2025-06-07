@@ -32,13 +32,13 @@ function getIPAddress() {
 function updateTime() {
   const now = new Date();
   const timeOptions = {
-    timeZone: "Europe/Helsinki",
+    timeZone: "Europe/Vienna", // Updated to Vienna time zone
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
   };
   const dateOptions = {
-    timeZone: "Europe/Helsinki",
+    timeZone: "Europe/Vienna",
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
@@ -56,11 +56,12 @@ function getDeviceInfo() {
   let deviceType = "-";
   let browserType = "-";
 
+  // Improved device detection
   if (/iphone|ipad|ipod/i.test(userAgent)) {
     deviceType = /ipad/i.test(userAgent) ? "iPad" : "iPhone";
   } else if (/android/i.test(userAgent)) {
     deviceType = /mobile/i.test(userAgent) ? "Android Phone" : "Android Tablet";
-  } else if (/win/i.test(userAgent)) {
+  } else if (/win/i.test(userAgent) && !/linux/i.test(userAgent)) {
     deviceType = "Windows PC";
   } else if (/macintosh|mac os x/i.test(userAgent)) {
     deviceType = "Macintosh";
@@ -70,6 +71,7 @@ function getDeviceInfo() {
     deviceType = "Unknown Device";
   }
 
+  // Browser detection
   if (userAgent.includes("tor") || userAgent.includes("torbrowser")) {
     browserType = "Tor Browser";
   } else if (userAgent.includes("brave")) {
@@ -78,8 +80,8 @@ function getDeviceInfo() {
     browserType = "Google Chrome";
   } else if (userAgent.includes("safari") && !userAgent.includes("chrome")) {
     browserType = "Safari";
-  } else if (userAgent.includes("firefox") && !userAgent.includes("tor")) {
-    browserType = "Mozilla Firefox";
+  } else if (userAgent.includes("firefox") || userAgent.includes("fire dragon")) {
+    browserType = "Fire Dragon"; // Assuming Fire Dragon is Firefox-based
   } else if (userAgent.includes("edge")) {
     browserType = "Microsoft Edge";
   } else if (userAgent.includes("opera") || userAgent.includes("opr")) {
