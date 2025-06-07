@@ -74,8 +74,6 @@ function getDeviceInfo() {
     deviceType = "Windows PC";
   } else if (/macintosh|mac os x/i.test(userAgent)) {
     deviceType = "Macintosh";
-  } else if {
-    deviceType = "Linux";
   } else {
     deviceType = "Desktop";
   }
@@ -92,8 +90,6 @@ function getDeviceInfo() {
     browserType = "Opera";
   } else if (userAgent.includes("msie") || userAgent.includes("trident")) {
     browserType = "Internet Explorer";
-  } else if (userAgent.includes("tor")) {
-    browserType = "tor";
   }
 
   const deviceInfo = `Device: ${deviceType} | Browser: ${browserType}`;
