@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let titles = " comlord ";
+  let titles = " vanish ";
   let titleElement = document.querySelector("title");
   let index = 0;
   let delay = 200;
@@ -32,7 +32,7 @@ function getIPAddress() {
 function updateTime() {
   const now = new Date();
   const timeOptions = {
-    timeZone: "Europe/Vienna", // Updated to Vienna time zone
+    timeZone: "Europe/Vienna",
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
@@ -56,7 +56,7 @@ function getDeviceInfo() {
   let deviceType = "-";
   let browserType = "-";
 
-  // Improved device detection
+  // Device detection with FireDragon priority for Linux
   if (/iphone|ipad|ipod/i.test(userAgent)) {
     deviceType = /ipad/i.test(userAgent) ? "iPad" : "iPhone";
   } else if (/android/i.test(userAgent)) {
@@ -65,7 +65,7 @@ function getDeviceInfo() {
     deviceType = "Windows PC";
   } else if (/macintosh|mac os x/i.test(userAgent)) {
     deviceType = "Macintosh";
-  } else if (/linux/i.test(userAgent)) {
+  } else if (/linux/i.test(userAgent) || userAgent.includes("fire dragon")) {
     deviceType = "Linux PC";
   } else {
     deviceType = "Unknown Device";
@@ -81,7 +81,7 @@ function getDeviceInfo() {
   } else if (userAgent.includes("safari") && !userAgent.includes("chrome")) {
     browserType = "Safari";
   } else if (userAgent.includes("firefox") || userAgent.includes("fire dragon")) {
-    browserType = "Fire Dragon"; // Assuming Fire Dragon is Firefox-based
+    browserType = "Fire Dragon";
   } else if (userAgent.includes("edge")) {
     browserType = "Microsoft Edge";
   } else if (userAgent.includes("opera") || userAgent.includes("opr")) {
