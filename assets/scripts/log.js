@@ -74,7 +74,7 @@ function getDeviceInfo() {
     browserType = "Tor Browser";
   } else if (userAgent.includes("brave")) {
     browserType = "Brave";
-  } else if (userAgent.includes("chrome") && !userAgent.includes("edge")) {
+  } else if (userAgent.includes("chrome") && !userAgent.includes("brave") && !userAgent.includes("edge")) {
     browserType = "Google Chrome";
   } else if (userAgent.includes("safari") && !userAgent.includes("chrome")) {
     browserType = "Safari";
